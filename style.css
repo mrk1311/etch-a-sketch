@@ -56,9 +56,11 @@ button {
 #controls {
     display: flex;
     flex-direction: column;
-    margin: 30px;
+    margin-right: 30px;
+    margin-top: 0px;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
 #size-picker-container {
@@ -70,11 +72,41 @@ button {
 
 #size-picker {
     width: 210px;
+    -webkit-appearance: none;
+    height: 10px;
+    background: #000;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 4px;
+    margin: 20px 0;
 }
+
+#size-picker::-webkit-slider-thumb {
+    width: 210px;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 30px;
+    background: #000;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+
+#size-picker::-moz-range-thumb {
+    width: 210px;
+    height: 60px;
+    background: #000;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 4px;
+  }
 
 #container {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 body {

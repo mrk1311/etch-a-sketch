@@ -3,15 +3,15 @@ const body = document.querySelector('body');
 let gridSize = 16;
 let gridVisible = true;
 
-// TODO add a hide/show grid button
+// add a hide/show grid button
 const gridButton = document.querySelector('#grid-btn');
 gridButton.addEventListener('click', () => {
     if (gridVisible === true) {
         hideGrid();
-        gridButton.textContent = 'Show Grid';
+        // gridButton.textContent = 'Show Grid';
     } else {
         showGrid();
-        gridButton.textContent = 'Hide Grid';
+        // gridButton.textContent = 'Hide Grid';
     }
 });
 
@@ -81,6 +81,8 @@ sizePicker.addEventListener('input', () => {
 createGrid(gridSize);
 
 function createGrid(size) {
+
+    gridVisible = true;
 
     // delete previous grid
     while (gridContainer.firstChild) {
