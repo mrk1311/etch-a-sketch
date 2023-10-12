@@ -1,5 +1,31 @@
-const gridContainer = document.querySelector('#container');
+const gridContainer = document.querySelector('#grid-container');
+const body = document.querySelector('body');
 
+// add a reset button
+
+const resetButton = document.querySelector('#reset-btn');
+resetButton.addEventListener('click', () => {
+    createGrid(newGridSize);
+});
+
+// change grid size when user changes the range slider
+
+const sizePicker = document.querySelector('#size-picker');
+sizePicker.addEventListener('change', () => {
+    newGridSize = sizePicker.value;
+    createGrid(newGridSize);
+});
+
+// change the grid size label when slider moves
+
+const sizePickerContainer = document.querySelector('#size-picker-container');
+const sizePickerLabel = document.querySelector('#size-picker-label');
+sizePicker.addEventListener('input', () => {
+    sizePickerLabel.textContent = sizePicker.value + ' x ' + sizePicker.value;
+});
+
+
+createGrid(16);
 
 function createGrid(size) {
 
@@ -26,13 +52,13 @@ function createGrid(size) {
 
     const gridCells = document.querySelectorAll('.grid-cell');
 
-    // paint cell when clicked
+    // paint cell when mouse is pressed down
 
     gridCells.forEach((gridCell) => {
-        gridCell.addEventListener('click', paint);
+        gridCell.addEventListener('mousedown', paint);
     });
 
-    // paint cell when mouse is held down
+    // paint cell when mouse is dragged
 
     gridContainer.addEventListener('mousedown', (e) => {
         gridCells.forEach((gridCell) => {
@@ -42,7 +68,7 @@ function createGrid(size) {
 
     // disable painting when mouse is released
 
-    gridContainer.addEventListener('mouseup', (e) => {
+    body.addEventListener('mouseup', (e) => {
         gridCells.forEach((gridCell) => {
             gridCell.removeEventListener('mouseover', paint);
         });
@@ -50,20 +76,10 @@ function createGrid(size) {
 
 }
 
-// paint cell (add a class to the cell)
+// paint a cell
 
 function paint(e) {
-    e.target.classList.add('grid-cell-painted');
+    color = document.getElementById('color-picker').value;
+    e.target.style.backgroundColor = color;
 }
 
-createGrid(32);
-
-const resetButton = document.querySelector('#reset-btn');
-resetButton.addEventListener('click', () => {
-    newGridSize = prompt('Enter a new grid size (1-100):');
-    if (newGridSize < 1 || newGridSize > 100) {
-        alert('Invalid grid size. Please enter a number between 1 and 100.');
-        return;
-    }
-    createGrid(newGridSize);
-});

@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="reset-btn">Reset</button>
-    <div id="container"></div>
+    <h1>Etch-a-Sketch</h1>
+    <div id="container">
+        <div id="controls">
+            <input type="color" id="color-picker" value="#000000">
+            <div id="size-picker-container">
+                <input type="range" id="size-picker" min="1" max="64" value="16">
+                <label for="size-picker" id="size-picker-label">16 x 16</label>
+            </div>
+            <button id="reset-btn">Reset</button>
+        </div>
+        <div id="grid-container"></div>
+    </div>
 </body>
 </html>
